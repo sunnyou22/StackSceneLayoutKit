@@ -207,6 +207,8 @@ private struct HomeStackLayoutProfile {
         let step = Float(clampedCount - 2)
         let baseOffsetX = 1.44 + (0.18 * step)
         let baseOffsetZ = 0.52 + (0.10 * step)
+        let visualCompensationX = 0.055 + (0.015 * step)
+        let visualCompensationZ = 0.025 + (0.005 * step)
         let spreadX = 0.11 + (0.02 * step)
         let spreadY = 0.08 + (0.01 * step)
         let spreadZ = 0.10 + (0.015 * step)
@@ -216,17 +218,17 @@ private struct HomeStackLayoutProfile {
         let frontCardRotationY = -0.24 - (0.02 * step)
         let cameraOrthographicScale = 4.10 + Double(step) * 0.14
         let cameraPosition = SCNVector3(
-            7.6 + (0.15 * step),
+            7.54 + (0.13 * step),
             5.9 + (0.05 * step),
             9.9 + (0.05 * step)
         )
         let cameraLookAt = SCNVector3(
-            -0.04 - (0.02 * step),
+            -0.01 - (0.02 * step),
             0.01,
             0.0
         )
         let stackRootPosition = SCNVector3(
-            -0.34 - (0.06 * step),
+            -0.30 - (0.05 * step),
             -0.10,
             0.0
         )
@@ -235,11 +237,11 @@ private struct HomeStackLayoutProfile {
             cardSpreadX: spreadX,
             cardSpreadY: spreadY,
             cardSpreadZ: spreadZ,
-            leftSideStackBaseOffsetX: baseOffsetX,
-            rightSideStackBaseOffsetX: baseOffsetX,
+            leftSideStackBaseOffsetX: baseOffsetX + visualCompensationX,
+            rightSideStackBaseOffsetX: baseOffsetX - visualCompensationX,
             sideStackBaseOffsetY: sideBaseOffsetY,
-            leftSideStackBaseOffsetZ: baseOffsetZ,
-            rightSideStackBaseOffsetZ: baseOffsetZ,
+            leftSideStackBaseOffsetZ: baseOffsetZ + visualCompensationZ,
+            rightSideStackBaseOffsetZ: baseOffsetZ - visualCompensationZ,
             focusedCardScale: focusedCardScale,
             cardPullOutZ: cardPullOutZ,
             frontCardRotationY: frontCardRotationY,
