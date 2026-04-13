@@ -1,0 +1,15 @@
+{
+  "originHash" : "0780fc8aed5e9410cb0a11ae89d180fb254299d5b05a50412036c17ae77bf44e",
+  "pins" : [
+    {
+      "identity" : "stack3dkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sunnyou22/Stack3DKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b4338950ba0402832ea7b3a8f43c4e45603f4a98"
+      }
+    }
+  ],
+  "version" : 3
+}
