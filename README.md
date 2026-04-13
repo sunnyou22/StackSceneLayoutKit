@@ -14,7 +14,7 @@
 
 ## 요구 사항
 
-- iOS 17 이상
+- iOS 18 이상
 - Swift 5.10
 - `Stack3DKit`
 

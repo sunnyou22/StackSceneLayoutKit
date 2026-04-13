@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "StackSceneLayoutKit",
     platforms: [
-        .iOS(.v17),
+        .iOS("18.0"),
     ],
     products: [
         .library(
