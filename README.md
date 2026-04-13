@@ -7,7 +7,7 @@
 ## 책임 범위
 
 - `HomeStackSceneLayoutView` 제공
-- 홈 스택 전용 카메라, 스프레드, 포커스 모션 preset 제공
+- 홈 스택 전용 카메라, 스프레드, 포커스 모션 프리셋 제공
 - `Stack3DSceneView`를 앱 모델과 분리된 형태로 감싸기
 
 이 패키지는 앱 전용 모델을 알지 못합니다. 호스트 앱이 `Stack3DItem` 배열, 선택 상태, 활성화 콜백을 만들어서 주입해야 합니다.
@@ -23,7 +23,7 @@
 Swift Package Manager에서 아래 저장소를 추가합니다.
 
 ```swift
-.package(url: "https://github.com/sunnyou22/StackSceneLayoutKit.git", branch: "master")
+.package(url: "https://github.com/sunnyou22/StackSceneLayoutKit.git", branch: "main")
 ```
 
 앱 코드에서 `Stack3DItem` 또는 `Stack3DConfiguration`을 직접 다룬다면 `Stack3DKit`도 함께 import 해야 합니다.
