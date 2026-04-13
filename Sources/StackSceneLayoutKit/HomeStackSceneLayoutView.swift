@@ -183,8 +183,7 @@ private struct HomeStackLayoutProfile {
     let stackRootPosition: SCNVector3
 
     static func make(for itemCount: Int) -> HomeStackLayoutProfile {
-        switch itemCount {
-        case ..<2:
+        if itemCount < 2 {
             return HomeStackLayoutProfile(
                 cardSpreadX: 0.0,
                 cardSpreadY: 0.0,
@@ -202,60 +201,52 @@ private struct HomeStackLayoutProfile {
                 cameraLookAt: SCNVector3(-0.02, 0.02, 0.0),
                 stackRootPosition: SCNVector3(-0.30, -0.10, 0.0)
             )
-        case 2:
-            return HomeStackLayoutProfile(
-                cardSpreadX: 0.12,
-                cardSpreadY: 0.09,
-                cardSpreadZ: 0.11,
-                leftSideStackBaseOffsetX: 1.48,
-                rightSideStackBaseOffsetX: 1.55,
-                sideStackBaseOffsetY: 0.38,
-                leftSideStackBaseOffsetZ: 0.80,
-                rightSideStackBaseOffsetZ: 0.28,
-                focusedCardScale: 1.30,
-                cardPullOutZ: 0.40,
-                frontCardRotationY: -0.24,
-                cameraOrthographicScale: 4.12,
-                cameraPosition: SCNVector3(7.6, 5.9, 9.9),
-                cameraLookAt: SCNVector3(-0.06, 0.02, 0.0),
-                stackRootPosition: SCNVector3(-0.40, -0.10, 0.0)
-            )
-        case 3:
-            return HomeStackLayoutProfile(
-                cardSpreadX: 0.15,
-                cardSpreadY: 0.10,
-                cardSpreadZ: 0.13,
-                leftSideStackBaseOffsetX: 2.50,
-                rightSideStackBaseOffsetX: 1.92,
-                sideStackBaseOffsetY: 0.45,
-                leftSideStackBaseOffsetZ: 1.50,
-                rightSideStackBaseOffsetZ: 0.34,
-                focusedCardScale: 1.26,
-                cardPullOutZ: 0.42,
-                frontCardRotationY: -0.28,
-                cameraOrthographicScale: 4.28,
-                cameraPosition: SCNVector3(7.8, 6.0, 10.0),
-                cameraLookAt: SCNVector3(-0.16, 0.0, 0.0),
-                stackRootPosition: SCNVector3(-0.58, -0.10, 0.0)
-            )
-        default:
-            return HomeStackLayoutProfile(
-                cardSpreadX: 0.18,
-                cardSpreadY: 0.12,
-                cardSpreadZ: 0.15,
-                leftSideStackBaseOffsetX: 2.10,
-                rightSideStackBaseOffsetX: 2.18,
-                sideStackBaseOffsetY: 0.5,
-                leftSideStackBaseOffsetZ: 1.60,
-                rightSideStackBaseOffsetZ: 0.42,
-                focusedCardScale: 1.24,
-                cardPullOutZ: 0.45,
-                frontCardRotationY: -0.3,
-                cameraOrthographicScale: 4.45,
-                cameraPosition: SCNVector3(8.0, 6.0, 10.0),
-                cameraLookAt: SCNVector3(-0.24, 0.0, 0.0),
-                stackRootPosition: SCNVector3(-0.80, -0.1, 0.0)
-            )
         }
+
+        let clampedCount = min(max(itemCount, 2), 4)
+        let step = Float(clampedCount - 2)
+        let baseOffsetX = 1.44 + (0.18 * step)
+        let baseOffsetZ = 0.52 + (0.10 * step)
+        let spreadX = 0.11 + (0.02 * step)
+        let spreadY = 0.08 + (0.01 * step)
+        let spreadZ = 0.10 + (0.015 * step)
+        let sideBaseOffsetY = 0.34 + (0.05 * step)
+        let focusedCardScale = 1.30 - (0.03 * step)
+        let cardPullOutZ = 0.40 + (0.02 * step)
+        let frontCardRotationY = -0.24 - (0.02 * step)
+        let cameraOrthographicScale = 4.10 + Double(step) * 0.14
+        let cameraPosition = SCNVector3(
+            7.6 + (0.15 * step),
+            5.9 + (0.05 * step),
+            9.9 + (0.05 * step)
+        )
+        let cameraLookAt = SCNVector3(
+            -0.04 - (0.02 * step),
+            0.01,
+            0.0
+        )
+        let stackRootPosition = SCNVector3(
+            -0.34 - (0.06 * step),
+            -0.10,
+            0.0
+        )
+
+        return HomeStackLayoutProfile(
+            cardSpreadX: spreadX,
+            cardSpreadY: spreadY,
+            cardSpreadZ: spreadZ,
+            leftSideStackBaseOffsetX: baseOffsetX,
+            rightSideStackBaseOffsetX: baseOffsetX,
+            sideStackBaseOffsetY: sideBaseOffsetY,
+            leftSideStackBaseOffsetZ: baseOffsetZ,
+            rightSideStackBaseOffsetZ: baseOffsetZ,
+            focusedCardScale: focusedCardScale,
+            cardPullOutZ: cardPullOutZ,
+            frontCardRotationY: frontCardRotationY,
+            cameraOrthographicScale: cameraOrthographicScale,
+            cameraPosition: cameraPosition,
+            cameraLookAt: cameraLookAt,
+            stackRootPosition: stackRootPosition
+        )
     }
 }
